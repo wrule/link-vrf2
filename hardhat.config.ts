@@ -12,9 +12,6 @@ const config: HardhatUserConfig = {
       accounts: secret.privateKey,
     },
   },
-  sourcify: {
-    enabled: true,
-  },
   etherscan: secret.etherscan,
 };
 
