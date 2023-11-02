@@ -7,8 +7,12 @@ const secret = require('./.secret');
 const config: HardhatUserConfig = {
   solidity: "0.8.20",
   networks: {
+    goerli: {
+      url: secret.alchemy.goerli.url,
+      accounts: secret.privateKey,
+    },
     sepolia: {
-      url: secret.alchemy.url,
+      url: secret.alchemy.sepolia.url,
       accounts: secret.privateKey,
     },
   },
