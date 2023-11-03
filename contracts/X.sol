@@ -19,8 +19,11 @@ contract X is VRFConsumerBase {
     return requestId;
   }
 
+  mapping(bytes32 => uint256) public randomMap;
+
   event fulfillRandomnessEvent(bytes32 requestId, uint256 randomness);
   function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
+    randomMap[requestId] = randomness;
     emit fulfillRandomnessEvent(requestId, randomness);
   }
 
