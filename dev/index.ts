@@ -7,7 +7,7 @@ async function main() {
   // const x = await deployContract<X>('X');
   watchContract(x);
 
-  const tx = await x.requestRandom(3200000);
+  const tx = await x.requestRandom(100000, { gasLimit: 600000 });
   console.log('hash:', tx.hash);
   const tr = await tx.wait();
   console.log('hash:', tr?.hash);
