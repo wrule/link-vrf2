@@ -3,11 +3,11 @@ import { deployContract, getContract, init, meta, watchContract } from './utils'
 
 async function main() {
   await meta();
-  const x = await getContract<X>('X', '0x49Cb3DdD9B9acFF4283625366700efF27c47D01f');
+  const x = await getContract<X>('X', '0xb6434AD5C33B48962d77eD0e5D248eBd4BCC0c99');
   // const x = await deployContract<X>('X');
   watchContract(x);
 
-  const tx = await x.requestRandom();
+  const tx = await x.requestRandom(3200000);
   console.log('hash:', tx.hash);
   const tr = await tx.wait();
   console.log('hash:', tr?.hash);
