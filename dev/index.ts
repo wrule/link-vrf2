@@ -4,7 +4,7 @@ import { deployContract, getContract, init, meta, watchContract } from './utils'
 async function main() {
   await meta();
   // const x = await deployContract<X>('X');
-  const x = await getContract<X>('X', '0xAd7aE10f8E77dae834D10CEd0986d7AE3122a763');
+  const x = await getContract<X>('X', '0x9Ae18776A381c632799129E23aD533467F60b23F');
 
   x.on(x.getEvent('requestRandomEvent'), (requestId: string) => {
     console.log('requestId:', requestId);
