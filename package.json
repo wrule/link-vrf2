@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx hardhat run dev/index.ts --network localhost",
-    "dev:test": "npx hardhat run dev/index.ts --network sepolia",
+    "dev:goerli": "npx hardhat run dev/index.ts --network goerli",
+    "dev:sepolia": "npx hardhat run dev/index.ts --network sepolia",
     "build": "npx hardhat compile",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
