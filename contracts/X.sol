@@ -12,8 +12,11 @@ contract X is VRFConsumerBase {
   uint256 constant fee = 0.1 * 10 ** 18;
   bytes32 constant keyHash = 0x0476f9a745b61ea5c0ab224d3a6e4c99f0b02fce4da01143a4f70aa80ae76e8a;
 
+  event requestRandomEvent(bytes32);
   function requestRandom() external returns (bytes32) {
-
+    bytes32 requestId = requestRandomness(keyHash, fee);
+    emit requestRandomEvent(requestId);
+    return requestId;
   }
 
   function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
