@@ -1,7 +1,18 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-contract X {
+import "@chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol";
+
+contract X is VRFV2WrapperConsumerBase {
+  constructor() VRFV2WrapperConsumerBase(
+    0x779877A7B0D9E8603169DdbD7836e478b4624789,
+    0xab18414CD93297B0d12ac29E63Ca20f515b3DB46
+  ) { }
+
+  function fulfillRandomWords(uint256 _requestId, uint256[] memory _randomWords) internal override {
+    
+  }
+
   event sendMessageEvent(string message);
   function sendMessage(string memory message) public {
     emit sendMessageEvent(message);
