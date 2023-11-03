@@ -9,8 +9,16 @@ contract X is VRFV2WrapperConsumerBase {
     0xab18414CD93297B0d12ac29E63Ca20f515b3DB46
   ) { }
 
+  event requestRandomEvent(uint256 requestId);
+  function requestRandom() external returns (uint256) {
+    uint256 requestId = requestRandomness(2500000, 3, 1);
+    emit requestRandomEvent(requestId);
+    return requestId;
+  }
+
+  event fulfillRandomWordsEvent(uint256 _requestId, uint256[] _randomWords);
   function fulfillRandomWords(uint256 _requestId, uint256[] memory _randomWords) internal override {
-    
+    emit fulfillRandomWordsEvent(_requestId, _randomWords);
   }
 
   event sendMessageEvent(string message);
