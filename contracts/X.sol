@@ -11,7 +11,7 @@ contract X is VRFV2WrapperConsumerBase {
 
   event requestRandomEvent(uint256 requestId);
   function requestRandom() external returns (uint256) {
-    uint256 requestId = requestRandomness(2500000, 3, 1);
+    uint256 requestId = requestRandomness(100000, 3, 1);
     emit requestRandomEvent(requestId);
     return requestId;
   }
