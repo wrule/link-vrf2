@@ -25,6 +25,10 @@ contract X is VRFV2WrapperConsumerBase, Ownable {
     emit fulfillRandomWordsEvent(_requestId, _randomWords);
   }
 
+  function releaseLINK() external onlyOwner {
+    linkToken.transfer(owner(), linkToken.balanceOf(address(this)));
+  }
+
   event sendMessageEvent(string message);
   function sendMessage(string memory message) public {
     emit sendMessageEvent(message);
