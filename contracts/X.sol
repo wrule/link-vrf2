@@ -2,12 +2,16 @@
 pragma solidity ^0.8.20;
 
 import "@chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol";
+import "@chainlink/contracts/src/v0.8/shared/token/ERC677/LinkToken.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract X is VRFV2WrapperConsumerBase {
+LinkToken constant linkToken = LinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
+
+contract X is VRFV2WrapperConsumerBase, Ownable {
   constructor() VRFV2WrapperConsumerBase(
-    0x779877A7B0D9E8603169DdbD7836e478b4624789,
+    address(linkToken),
     0xab18414CD93297B0d12ac29E63Ca20f515b3DB46
-  ) { }
+  ) Ownable(msg.sender) { }
 
   event requestRandomEvent(uint256 requestId);
   function requestRandom() external returns (uint256) {
