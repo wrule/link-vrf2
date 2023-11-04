@@ -12,8 +12,8 @@ struct Chip {
 
 struct Bet {
   bool result;
+  uint256 deadline;
   uint256 prizePool;
-  mapping(address => Chip) chips;
 }
 
 LinkToken constant linkToken = LinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
@@ -23,6 +23,14 @@ contract X is VRFV2WrapperConsumerBase, Ownable {
     address(linkToken),
     0xab18414CD93297B0d12ac29E63Ca20f515b3DB46
   ) Ownable(msg.sender) { }
+
+  Bet[] bets;
+  mapping(uint256 => mapping(address => Chip)) chips;
+
+  function newBet(uint256 deadline) external returns (uint256) {
+
+    return 0;
+  }
 
   event requestRandomEvent(uint256 requestId);
   function requestRandom() external returns (uint256) {
