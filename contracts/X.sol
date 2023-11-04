@@ -5,6 +5,17 @@ import "@chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol";
 import "@chainlink/contracts/src/v0.8/shared/token/ERC677/LinkToken.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+struct Chip {
+  bool target;
+  uint256 amount;
+}
+
+struct Bet {
+  bool result;
+  uint256 prizePool;
+  mapping(address => Chip) chips;
+}
+
 LinkToken constant linkToken = LinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
 
 contract X is VRFV2WrapperConsumerBase, Ownable {
